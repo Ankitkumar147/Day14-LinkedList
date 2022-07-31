@@ -2,19 +2,20 @@ package com.Bridgelabz.LinkedList;
 
 public class Linkedlist {
     Node head;
-    class Node{
+
+    class Node {
         int data;
         Node next;
 
-        Node(int data){
+        Node(int data) {
             this.data = data;
             this.next = null;
         }
     }
 
-    public void addFirst(int data){
+    public void addFirst(int data) {
         Node newNode = new Node(data);
-        if (head == null){
+        if (head == null) {
             head = newNode;
             return;
         }
@@ -35,14 +36,14 @@ public class Linkedlist {
         currentNode.next = newNode;
     }
 
-    public void printList(){
-        if (head == null ){
+    public void printList() {
+        if (head == null) {
             System.out.println("List is Empty.!!!!");
             return;
         }
         Node currentNode = head;
-        while (currentNode != null){
-            System.out.print(currentNode.data +"-->");
+        while (currentNode != null) {
+            System.out.print(currentNode.data + "-->");
             currentNode = currentNode.next;
         }
         System.out.println("null");
@@ -68,8 +69,8 @@ public class Linkedlist {
         currentNode.next = node;
     }
 
-    public void deleteFirst(){
-        if (head == null){
+    public void deleteFirst() {
+        if (head == null) {
             System.out.println("List is Empty.");
             return;
         }
@@ -81,18 +82,19 @@ public class Linkedlist {
             System.out.println("List is Empty.");
             return;
         }
-        if (head.next == null){
+        if (head.next == null) {
             head = null;
             return;
         }
         Node secondLast = head;
         Node lastNode = head.next;
-        while(lastNode.next != null){
+        while (lastNode.next != null) {
             lastNode = lastNode.next;
             secondLast = secondLast.next;
         }
         secondLast.next = null;
     }
+
     public void findNode(int data) {
         if (head == null) {
             System.out.println("The List is Empty.");
@@ -106,13 +108,14 @@ public class Linkedlist {
             currentNode = currentNode.next;
         }
     }
-    public static void main(String[] args) {
-        System.out.println("Welcome to the Linked List Program.");
-        Linkedlist list = new Linkedlist();
-        list.addFirst(56);
-        list.addLast(70);
-        list.insertInBetween(56,70,30);
-        list.printList();
-        list.findNode(30);
+
+    public void insertElement(int after, int data) {
+        Node currentNode = head;
+        while (currentNode.data != after ) {
+            currentNode = currentNode.next;
+        }
+        Node newNode = new Node(data);
+        newNode.next = currentNode.next;
+        currentNode.next = newNode;
     }
 }
