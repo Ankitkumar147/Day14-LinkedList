@@ -58,12 +58,22 @@ public class Linkedlist {
         currentNode.next = node;
     }
 
+    public void insertInBetween(int before, int after, int data) {
+        Node currentNode = head;
+        while (currentNode.data != before && currentNode.data != after) {
+            currentNode = currentNode.next;
+        }
+        Node node = new Node(data);
+        node.next = currentNode.next;
+        currentNode.next = node;
+    }
+
     public static void main(String[] args) {
         System.out.println("Welcome to the Linked List Program.");
         Linkedlist list = new Linkedlist();
         list.addFirst(56);
-        list.appendingNode(56,30);
-        list.appendingNode(30,70);
+        list.addLast(70);
+        list.insertInBetween(56,70,30);
         list.printList();
     }
 }
