@@ -67,13 +67,21 @@ public class Linkedlist {
         node.next = currentNode.next;
         currentNode.next = node;
     }
-
+    public void deleteFirst(){
+        if (head == null){
+            System.out.println("List is Empty.");
+            return;
+        }
+        head = head.next;
+    }
     public static void main(String[] args) {
         System.out.println("Welcome to the Linked List Program.");
         Linkedlist list = new Linkedlist();
         list.addFirst(56);
         list.addLast(70);
         list.insertInBetween(56,70,30);
+        list.printList();
+        list.deleteFirst();
         list.printList();
     }
 }
