@@ -11,6 +11,7 @@ public class Linkedlist {
             this.next = null;
         }
     }
+
     public void addFirst(int data){
         Node newNode = new Node(data);
         if (head == null){
@@ -20,6 +21,20 @@ public class Linkedlist {
         newNode.next = head;
         head = newNode;
     }
+
+    public void addLast(int data) {
+        Node newNode = new Node(data);
+        if (head == null) {
+            head = newNode;
+            return;
+        }
+        Node currentNode = head;
+        while (currentNode.next != null) {
+            currentNode = currentNode.next;
+        }
+        currentNode.next = newNode;
+    }
+
     public void printList(){
         if (head == null ){
             System.out.println("List is Empty.!!!!");
@@ -27,18 +42,28 @@ public class Linkedlist {
         }
         Node currentNode = head;
         while (currentNode != null){
-            System.out.print(currentNode.data +"--->");
+            System.out.print(currentNode.data +"-->");
             currentNode = currentNode.next;
         }
         System.out.println("null");
     }
 
+    public void appendingNode(int before, int data) {
+        Node currentNode = head;
+        while (currentNode.data != before) {
+            currentNode = currentNode.next;
+        }
+        Node node = new Node(data);
+        node.next = currentNode.next;
+        currentNode.next = node;
+    }
+
     public static void main(String[] args) {
         System.out.println("Welcome to the Linked List Program.");
         Linkedlist list = new Linkedlist();
-        list.addFirst(70);
-        list.addFirst(30);
         list.addFirst(56);
+        list.appendingNode(56,30);
+        list.appendingNode(30,70);
         list.printList();
     }
 }
