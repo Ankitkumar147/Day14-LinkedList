@@ -93,6 +93,19 @@ public class Linkedlist {
         }
         secondLast.next = null;
     }
+    public void findNode(int data) {
+        if (head == null) {
+            System.out.println("The List is Empty.");
+            return;
+        }
+        Node currentNode = head;
+        while (currentNode != null) {
+            if (currentNode.data == data) {
+                System.out.println(data + " Element found in the List.");
+            }
+            currentNode = currentNode.next;
+        }
+    }
     public static void main(String[] args) {
         System.out.println("Welcome to the Linked List Program.");
         Linkedlist list = new Linkedlist();
@@ -100,7 +113,6 @@ public class Linkedlist {
         list.addLast(70);
         list.insertInBetween(56,70,30);
         list.printList();
-        list.deleteLast();
-        list.printList();
+        list.findNode(30);
     }
 }
